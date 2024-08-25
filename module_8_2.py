@@ -19,7 +19,7 @@ def personal_sum(*numbers):
 
 
 def calculate_average(*numbers):
-    if isinstance(numbers, int):
+    if isinstance(*numbers, int):
         return None
     try:
         set_sum = personal_sum(*numbers)
