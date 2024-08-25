@@ -5,29 +5,29 @@ thanks = '\033[30m\033[47mБлагодарю за внимание :-)\033[0m'
 print()
 
 
-def personal_sum(*numbers):
+def personal_sum(numbers):
     result = 0
     incorrect_data = 0
     for i in numbers:
-        for j in i:
-            try:
-                result = result + j
-            except TypeError:
-                print(f'Некорректный тип данных для подсчета суммы - {j}')
-                incorrect_data = incorrect_data + 1
+        try:
+            result = result + i
+        except TypeError:
+            print(f'Некорректный тип данных для подсчета суммы - {i}')
+            incorrect_data += 1
     return result, incorrect_data
 
 
-def calculate_average(*numbers):
-    if isinstance(*numbers, int):
-        return None
+def calculate_average(numbers):
     try:
-        set_sum = personal_sum(*numbers)
-        return set_sum[0] / (len(*numbers) - set_sum[1])
+        set_sum = personal_sum(numbers)
+        return set_sum[0] / (len(numbers) - set_sum[1])
     except ZeroDivisionError:
         return 0
     except TypeError:
-        return f'В numbers записан некорректный тип данных'
+        return print(f'В numbers записан некорректный тип данных')
+    except:
+        if isinstance(numbers, int):
+            return None
 
 
 print(f'Результат 1: {calculate_average("1, 2, 3")} (Строка перебирается, но каждый символ - строковый тип)')
